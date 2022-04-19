@@ -14,7 +14,8 @@ import { NavBar } from "../NavBar";
 import { GetSpay } from "../../pages/GetSpay";
 import { AccountPage } from "../../pages/Account";
 import { TestFaucetPage as Faucet } from "../../pages/TestFaucetPage";
-import Market from "../../pages/MarketPage";
+import Market from "../../pages/Market/MarketPage";
+import MarketItemDetail from "../../pages/Market/MarketItemDetail";
 
 // import { Web3ModalContext } from '../../contexts/Web3ModalProvider';
 
@@ -47,6 +48,11 @@ const Routes = () => {
         <Route exact path={locations.getSpay()} component={GetSpay} />
         <Route exact path={locations.faucet()} component={Faucet} />
         <Route exact path={locations.market()} component={Market} />
+        <Route
+          exact
+          path={locations.marketDetail()}
+          component={MarketItemDetail}
+        />
 
         {/* <Route exact path={locations.proposals()} component={PollPage} /> */}
 

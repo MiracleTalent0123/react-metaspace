@@ -11,6 +11,7 @@ const Box = styled.div`
     rgba(213, 33, 127, 0.5) 100%
   );
   color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const BreadCrumb: React.FC<BreadCrumbProps> = ({ title }) => {

@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #040b13;
+  --background: #1b1c1e;
+  --navbar: #0e0f10;
   --danger: #ffa900;
   --error: red;
   --primary: #bd8e6a;
@@ -49,6 +50,10 @@ body {
   margin: 0;
   background-color: var(--background);
   color: var(--text);
+}
+
+nav {
+  background-color: var(--navbar) !important;
 }
 
 /* body {

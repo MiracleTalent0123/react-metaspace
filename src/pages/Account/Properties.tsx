@@ -24,12 +24,14 @@ export enum ItemType {
   UNCOMMON = "UNCOMMON",
   EPIC = "EPIC",
   COMMON = "COMMON",
+  RARE = "RARE",
 }
 export const colors = {
   [ItemType.LEGENDARY]: "#FF8C00",
   [ItemType.UNCOMMON]: "#00AF38",
   [ItemType.EPIC]: "#CB35FF",
   [ItemType.COMMON]: "#AFAFAF",
+  [ItemType.RARE]: "#00A9CF",
 };
 export const Properties = () => {
   // const { data } = props;

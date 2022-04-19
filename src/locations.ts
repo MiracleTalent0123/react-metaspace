@@ -15,6 +15,7 @@ export const locations: Locations = {
   proposals: () => "/proposals",
   faucet: () => "/faucet",
   market: () => "/market",
+  marketDetail: () => "/market/item",
   proposal: (proposalId: string = ":proposalId") => `/proposal/${proposalId}`,
   // nft: (
   //   contractAddress: string = ':contractAddress',

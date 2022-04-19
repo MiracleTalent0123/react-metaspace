@@ -1,21 +1,37 @@
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import MarketItemBG from "../images/market/market_item.png";
 import Spacey from "../images/market/spacey.png";
+import { locations } from "../locations";
 import { colors, ItemType } from "../pages/Account/Properties";
+import { ComponentType } from "../pages/Market/MarketItemDetail";
+import { PropertyType } from "../pages/Market/MarketPage";
 
 export interface MarketItemProps {
   img_url: any;
-  content: string;
+  content?: string;
   type: ItemType;
   name: string;
   price: string;
   chain: string;
-  color: string;
-  head: string;
+  head?: string;
+  propertyType?: PropertyType;
+  owner?: string;
+  buyFrom?: string;
+  components?: ComponentType[];
+  attributes?: Attribute[];
+  expireDate?: string;
 }
 
-interface Props {
+interface Attribute {
+  label: string;
+  value?: string;
+  color?: string;
+}
+
+export interface DetailProps {
   props: MarketItemProps;
+  buyFrom: string;
 }
 
 const MarketItemContent = styled.div`
@@ -71,34 +87,42 @@ const MarketItemImg = styled.img`
   z-index: -10;
 `;
 
-const Button = styled.button`
+export const Button = styled.button`
   background: linear-gradient(270deg, #d02280 0%, #493e8f 100%);
-  padding: 3px 20px;
+  padding: 3px 30px;
   box-shadow: 0px 4px 13px rgba(0, 0, 0, 0.8);
 `;
 
-const MarketItem: React.FC<Props> = ({ props }) => {
+const MarketItem: React.FC<DetailProps> = ({ props, buyFrom }) => {
+  const history = useHistory();
+
   return (
     <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/5 2xl:w-1/6 p-4">
-      <MarketItemContent>
+      <MarketItemContent
+        onClick={() => {
+          history.push({
+            pathname: locations.marketDetail(),
+            state: { item: { ...props, buyFrom } },
+          });
+        }}
+      >
         <MarketItemImg src={MarketItemBG} />
         <div className="flex">
           <div
-            className="rounded-tl-md rounded-br-md px-2 text-xs self-start shadow-md"
+            className="rounded-tl-md rounded-br-md px-1 text-xs self-start shadow-md w-20"
             style={{ background: colors[props.type], margin: "1px" }}
           >
             {props.type}
           </div>
         </div>
-
-        <div className="h-32 text-center">
+        <div className="h-76 sm:h-48 text-center">
           <img
             src={props.img_url}
             alt="market item"
-            className="w-64 h-full px-8 py-2 m-auto"
+            className="w-full h-full px-4 py-2 m-auto"
           />
         </div>
-        <div className="p-4">
+        <div className="p-4 pt-2">
           <div className="flex justify-between">
             <p className="text-lg">{props.name}</p>
           </div>

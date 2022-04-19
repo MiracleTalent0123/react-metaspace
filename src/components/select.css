@@ -9,6 +9,12 @@
     #2e2041 46.88%,
     #322d57 100%
   ) !important;
+  box-shadow: none !important;
+  border-radius: 3px !important;
+}
+
+.select-1 > .select__control:before {
+  display: none;
 }
 
 .select-1 .select__value-container {
@@ -18,10 +24,9 @@
 .select__control {
   box-sizing: border-box;
   border: none !important;
-  border-radius: 5px;
+  border-radius: 6px !important;
   text-align: left;
-  background: transparent !important;
-  box-shadow: none !important;
+  background: #1b1c1e !important;
   box-shadow: 4px 5px 9px rgba(0, 0, 0, 0.8),
     inset 5px 4px 8px rgba(0, 0, 0, 0.25) !important;
   display: inline-block;
@@ -36,7 +41,6 @@
 .select__control:before {
   content: "";
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
   right: 0;
