@@ -106,7 +106,9 @@ const MarketModal: React.FC<MarketModalProps> = ({ item, count }) => {
                     <p className="text-sm mt-3">
                       ${" "}
                       {(
-                        count * (priceData ? priceData["spacey-2025"].usd : 0)
+                        count *
+                        Number(item.price) *
+                        (priceData ? priceData["spacey-2025"].usd : 0)
                       ).toFixed(2)}{" "}
                       USD
                     </p>
