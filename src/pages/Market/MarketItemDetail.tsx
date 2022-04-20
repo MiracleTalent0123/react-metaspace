@@ -7,10 +7,10 @@ import { MarketItemProps } from "../../components/MarketCard";
 import { useLocation } from "react-router-dom";
 import { ellipseAddress } from "../../lib/utils";
 import Spacey from "../../images/market/spacey.png";
-import { Button } from "../../components/MarketCard";
 import { useState } from "react";
 import { PropertyType } from "./MarketPage";
 import Map from "../../images/market/Map.png";
+import MarketModal from "./MarketModal";
 
 const MarketDetail = styled.div`
   background: url(${DetailBG}) no-repeat;
@@ -86,6 +86,15 @@ export interface ComponentType {
   img: any;
   label: string;
 }
+
+export const Price = ({ price }: { price: number }) => (
+  <div className="flex items-center">
+    <div>
+      <img src={Spacey} alt="spacey" className="flex w-5" />
+    </div>
+    <span className="text-lg ml-2">{price} SPAY</span>
+  </div>
+);
 
 const MarketItemDetail = () => {
   const { state } = useLocation<stateType>();
@@ -249,16 +258,9 @@ const MarketItemDetail = () => {
                       </CountButton>
                     </div>
                   </div>
-                  <div className="flex justify-between mt-4">
-                    <div className="flex items-center">
-                      <div>
-                        <img src={Spacey} alt="spacey" className="flex" />
-                      </div>
-                      <span className="text-lg ml-2">
-                        {Number(state.item.price) * count} SPAY
-                      </span>
-                    </div>
-                    <Button className="text-sm rounded">Buy Now</Button>
+                  <div className="flex justify-between mt-4 market-buy">
+                    <Price price={Number(state.item.price) * count} />
+                    <MarketModal item={state.item} count={count} />
                   </div>
                 </DetailBox>
               </Detail>
